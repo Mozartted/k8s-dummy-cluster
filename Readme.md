@@ -50,3 +50,8 @@ E.g if your domain is `testdb.com` defined this within /etc/hosts file, with the
 **Deploying the app**
 
 - Run the command `helm install -f values.yml talent-plus-helm-chart ./` from the project path.
+- Setup `/etc/hosts` to point to the domain, with `127.0.0.1`
+- Use `minikube tunnel` command to connect ingress to the locally hosted domain.
+
+Here's what the app on successful deployment should look like.
+![deployed](./assets/deployed.png)
