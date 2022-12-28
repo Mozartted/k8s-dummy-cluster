@@ -11,8 +11,8 @@ The components of this system included the following.
 - An ingress component
 - 2 services
 - 3 pods
-  - One frontend pod
-  - 2 backend pods.
+  - 2 frontend pod
+  - 1 backend pods.
 
 The images picked for hosting are as follows.
 
@@ -37,3 +37,16 @@ The helm templates defined within this project includes the following.
 - ingress
 
 The `values.yml` contains the configurations needed to host and run this project base.
+
+### Testing with minikube
+
+While trying to run this project on minikube the following has to be taken note off.
+
+- Define your host name within /etc/hosts on your machine. If you are on a mac (m1), enable minikube ingress addons `minikube addons enable ingress ` This would ensure your ingress service gets an external ip address.
+- Use Minikube tunnel `minkube tunnel` command to ensure the ingress service recieves the proxy call on your host tested within localhost.
+
+E.g if your domain is `testdb.com` defined this within /etc/hosts file, with the ip address pointing to `127.0.0.1` then use `minikube tunnel` command to point the ingress path to it, when deployed.
+
+**Deploying the app**
+
+- Run the command `helm install -f values.yml talent-plus-helm-chart ./` from the project path.
