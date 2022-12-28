@@ -1,0 +1,28 @@
+backend:
+  replica: 1
+  label: backend
+  name: mongodb-deployment
+  image: mongo
+  port: 27017
+  service:
+    name: mongodb-service
+    port: 27017
+frontend:
+  replica: 2
+  label: frontend
+  name: mongo-express-deploymnent
+  image: mongo-express:latest
+  port: 8081
+  service:
+    name: mongo-express-service
+    port: 8081
+ingress:
+  name: ingress-dash
+  host: mongo-dashboard.com
+  pathType: Prefix
+secret: "app-secret"
+configmap: "mongodb-configmap"
+namespace: default
+mongo:
+  root_username: dXNlcm5hbWU=
+  root_password: cGFzc3dvcmQ=
